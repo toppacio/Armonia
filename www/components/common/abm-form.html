@@ -1,0 +1,6 @@
+<form novalidate ng-submit="abmCtrl.saveChanges();" name="abmCtrl.entityForm">
+    <formly-form model="abmCtrl.selectedEntity" fields="abmCtrl.formFields" form="abmCtrl.entityForm" >
+        <button type="submit" class="btn btn-primary" ng-disabled="abmCtrl.entityForm.$invalid">Guardar</button>
+        <button type="button" class="btn btn-primary" ng-click="abmCtrl.goToPreviousState()">Cancelar</button>
+    </formly-form>
+</form>
