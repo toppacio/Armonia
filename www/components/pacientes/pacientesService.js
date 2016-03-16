@@ -5,32 +5,33 @@ angular
 function PacientesService(DB) {
 
     return {
-        createPaciente: createPaciente,
-        getPacientes: getPacientes,
-        getPaciente: getPaciente,
-        updatePaciente: updatePaciente
+        getAll: getAll,
+        getOne: getOne,
+        createEntity: createEntity,
+        updateEntity: updateEntity,
+        deleteEntity: deleteEntity
     }
 
-    function createPaciente(paciente) {
-        return DB.query("INSERT INTO pacientes (apellido, nombre, telefono, email, idObraSocial) values(?, ?, ?, ?, ?);", [paciente.apellido, paciente.nombre, paciente.telefono, paciente.email, paciente.idObraSocial]);
+    function createEntity(entity) {
+        return DB.query("INSERT INTO pacientes (apellido, nombre, telefono, email, idObraSocial) values(?, ?, ?, ?, ?);", [entity.apellido, entity.nombre, entity.telefono, entity.email, entity.idObraSocial]);
     }
 
-    function getPacientes() {
+    function getAll() {
         return DB.query('SELECT * FROM pacientes')
             .then(function(result) {
                 return DB.fetchAll(result);
             });
     };
 
-    function getPaciente(codigo) {
-        return DB.query('SELECT * FROM pacientes where id = ?', [codigo])
+    function getOne(id) {
+        return DB.query('SELECT * FROM pacientes where id = ?', [id])
             .then(function(result) {
                 return DB.fetch(result);
             });
     };
 
 
-    function updatePaciente(paciente) {
+    function updateEntity(entity) {
         return DB.query(
                 'UPDATE pacientes SET' //
                 + ' apellido = ?, ' //
@@ -39,7 +40,18 @@ function PacientesService(DB) {
                 + ' email = ?, ' //
                 + ' idObraSocial = ? ' //
                 + ' where id = ?' //
-                , [paciente.apellido, paciente.nombre, paciente.telefono, paciente.email, paciente.idObraSocial, paciente.id]
+                , [entity.apellido, entity.nombre, entity.telefono, entity.email, entity.idObraSocial, entity.id]
+            )
+            .then(function(result) {
+                return result;
+            });
+    };
+
+
+    function deleteEntity(entity) {
+        return DB.query(
+                'DELETE FROM pacientes where id = ?' //
+                , [entity.id]
             )
             .then(function(result) {
                 return result;

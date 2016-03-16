@@ -1,0 +1,31 @@
+<md-content class="pacientes view-all" layout="column" flex layout-align="start stretch">
+  <md-card ng-repeat="entity in abmCtrl.getEntities()">
+    <md-card-content class="md-padding">
+      <div layout="column" flex>
+        <div layout="row" layout-align="space-between center">
+          <span class="md-title apellido-nombre" flex>{{entity.apellido}}, {{entity.nombre}}</span>
+          <span flex="30" class="md-subhead obra-social">{{entity.obraSocial.descripcion}}</span>
+        </div>
+        <div layout="row">
+          <span flex="30">
+            <md-icon md-svg-src="phone"></md-icon>
+            {{entity.telefono ? entity.telefono : '-'}}
+          </span>
+          <span>
+            <md-icon md-svg-src="email"></md-icon>
+            {{entity.email ? entity.email : '-'}}
+          </span>
+        </div>
+        <span flex="10" layout="row" layout-align="end center">
+          <md-button class="md-icon-button" ui-sref="pacientesEdit({idEntity: entity.id})">
+            <md-icon md-svg-icon="pencil"></md-icon>
+          </md-button>
+          <md-button class="md-icon-button" ng-click="abmCtrl.showConfirmDelete($event, entity)">
+            <md-icon md-svg-icon="delete"></md-icon>
+          </md-button>
+        </span>
+      </div>
+    </md-card-content>
+
+  </md-card>
+</md-content>

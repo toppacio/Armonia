@@ -9,6 +9,10 @@ function ObrasSocialesService() {
 
 	function getObrasSociales() {
 		return [{
+			"id": "0",
+			"codigo": "NINGUNA",
+			"descripcion": "Ninguna"
+		},{
 			"id": "1",
 			"codigo": "OSDE",
 			"descripcion": "Obra Social de Empleados de Comercio"

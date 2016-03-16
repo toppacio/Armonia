@@ -1,0 +1,26 @@
+<md-content layout-align="start stretch" flex>
+  <form novalidate ng-submit="abmCtrl.saveChanges()" name="abmCtrl.entityForm">
+    <md-input-container class="md-block">
+      <md-icon md-svg-src="account"></md-icon>
+      <input ng-model="abmCtrl.selectedEntity.apellido" type="text" placeholder="Apellido"></md-input-container>
+    <md-input-container class="md-block">
+      <md-icon md-svg-src="account"></md-icon>
+      <input ng-model="abmCtrl.selectedEntity.nombre" type="text" placeholder="Nombre"></md-input-container>
+    <md-input-container class="md-block">
+      <md-icon md-svg-src="phone"></md-icon>
+      <input ng-model="abmCtrl.selectedEntity.telefono" type="text" placeholder="Teléfono"></md-input-container>
+    <md-input-container class="md-block">
+      <md-icon md-svg-src="email"></md-icon>
+      <input ng-model="abmCtrl.selectedEntity.email" type="email" placeholder="Email" ng-required="true"></md-input-container>
+    <md-input-container class="md-block">
+      <label>Obra Social</label>
+      <md-select placeholder="Obra Social" ng-model="abmCtrl.selectedEntity.idObraSocial">
+        <md-option ng-value="obraSocial.id" ng-repeat="obraSocial in abmCtrl.obrasSociales">{{obraSocial.descripcion}}</md-option>
+      </md-select>
+    </md-input-container>
+    <section layout="row" layout-align="center center" layout-wrap>
+      <md-button type="submit" class="md-raised md-primary" ng-disabled="abmCtrl.entityForm.$invalid">Guardar</md-button>
+      <md-button class="md-raised" ng-click="abmCtrl.goToPreviousState()">Cancelar</md-button>
+    </section>
+  </form>
+</md-content>
