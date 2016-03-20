@@ -13,18 +13,18 @@ function PacientesService(DB) {
     }
 
     function createEntity(entity) {
-        return DB.query("INSERT INTO pacientes (apellido, nombre, telefono, email, idObraSocial) values(?, ?, ?, ?, ?);", [entity.apellido, entity.nombre, entity.telefono, entity.email, entity.idObraSocial]);
+        return DB.query("INSERT INTO paciente (apellido, nombre, telefono, email, idObraSocial) values(?, ?, ?, ?, ?);", [entity.apellido, entity.nombre, entity.telefono, entity.email, entity.idObraSocial]);
     }
 
     function getAll() {
-        return DB.query('SELECT * FROM pacientes')
+        return DB.query('SELECT * FROM paciente')
             .then(function(result) {
                 return DB.fetchAll(result);
             });
     };
 
     function getOne(id) {
-        return DB.query('SELECT * FROM pacientes where id = ?', [id])
+        return DB.query('SELECT * FROM paciente where id = ?', [id])
             .then(function(result) {
                 return DB.fetch(result);
             });
@@ -33,7 +33,7 @@ function PacientesService(DB) {
 
     function updateEntity(entity) {
         return DB.query(
-                'UPDATE pacientes SET' //
+                'UPDATE paciente SET' //
                 + ' apellido = ?, ' //
                 + ' nombre = ?, ' //
                 + ' telefono = ?, ' //
@@ -50,7 +50,7 @@ function PacientesService(DB) {
 
     function deleteEntity(entity) {
         return DB.query(
-                'DELETE FROM pacientes where id = ?' //
+                'DELETE FROM paciente where id = ?' //
                 , [entity.id]
             )
             .then(function(result) {

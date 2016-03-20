@@ -2,19 +2,20 @@
   <form novalidate ng-submit="abmCtrl.saveChanges()" name="abmCtrl.entityForm">
     <md-input-container class="md-block">
       <md-icon md-svg-src="account"></md-icon>
-      <input ng-model="abmCtrl.selectedEntity.apellido" type="text" placeholder="Apellido"></md-input-container>
+      <input ng-model="abmCtrl.selectedEntity.apellido" type="text" placeholder="Apellido" ng-required="true"></md-input-container>
     <md-input-container class="md-block">
       <md-icon md-svg-src="account"></md-icon>
-      <input ng-model="abmCtrl.selectedEntity.nombre" type="text" placeholder="Nombre"></md-input-container>
+      <input ng-model="abmCtrl.selectedEntity.nombre" type="text" placeholder="Nombre" ng-required="true"></md-input-container>
     <md-input-container class="md-block">
       <md-icon md-svg-src="phone"></md-icon>
-      <input ng-model="abmCtrl.selectedEntity.telefono" type="text" placeholder="Teléfono"></md-input-container>
+      <input ng-model="abmCtrl.selectedEntity.telefono" type="text" placeholder="Teléfono" ng-required="true"></md-input-container>
     <md-input-container class="md-block">
       <md-icon md-svg-src="email"></md-icon>
-      <input ng-model="abmCtrl.selectedEntity.email" type="email" placeholder="Email" ng-required="true"></md-input-container>
+      <input ng-model="abmCtrl.selectedEntity.email" type="email" placeholder="Email"></md-input-container>
     <md-input-container class="md-block">
+      <md-icon md-svg-src="label"></md-icon>
       <label>Obra Social</label>
-      <md-select placeholder="Obra Social" ng-model="abmCtrl.selectedEntity.idObraSocial">
+      <md-select ng-model="abmCtrl.selectedEntity.idObraSocial">
         <md-option ng-value="obraSocial.id" ng-repeat="obraSocial in abmCtrl.obrasSociales">{{obraSocial.descripcion}}</md-option>
       </md-select>
     </md-input-container>

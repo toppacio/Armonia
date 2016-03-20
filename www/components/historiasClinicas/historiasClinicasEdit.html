@@ -1,0 +1,25 @@
+<md-content layout-align="start stretch" flex>
+  <form novalidate ng-submit="abmCtrl.saveChanges()" name="abmCtrl.entityForm">
+    <span>
+      <h2>Paciente: {{abmCtrl.paciente.apellido}}, {{abmCtrl.paciente.nombre}}</h2>
+    </span>
+    <md-datepicker ng-model="abmCtrl.selectedEntity.fecha" md-placeholder="Fecha" ng-required="true"></md-datepicker>
+    <md-input-container class="md-block">
+      <md-icon md-svg-src="label"></md-icon>
+      <label>Atendido por:</label>
+      <md-select placeholder="" ng-model="abmCtrl.selectedEntity.idProfesional">
+        <md-option ng-value="profesional.id" ng-repeat="profesional in abmCtrl.profesionales">{{profesional.descripcion}}</md-option>
+      </md-select>
+    </md-input-container>
+    <md-input-container class="md-block">
+      <md-icon md-svg-src="details"></md-icon>
+      <label>Detalle</label>
+      <textarea ng-model="abmCtrl.selectedEntity.detalle" rows="5" md-select-on-focus></textarea>
+    </md-input-container>
+
+    <section layout="row" layout-align="center center" layout-wrap>
+      <md-button type="submit" class="md-raised md-primary" ng-disabled="abmCtrl.entityForm.$invalid">Guardar</md-button>
+      <md-button class="md-raised" ng-click="abmCtrl.goToPreviousState()">Cancelar</md-button>
+    </section>
+  </form>
+</md-content>

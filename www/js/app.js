@@ -5,7 +5,7 @@ angular.module('ArmoniaApp', ['formly', 'formlyBootstrap', 'ArmoniaApp.controlle
   .constant('DB_CONFIG', {
     name: 'ArmoniaDB',
     tables: [{
-      name: 'pacientes',
+      name: 'paciente',
       columns: [{
         name: 'id',
         type: 'integer primary key autoincrement'
@@ -24,6 +24,24 @@ angular.module('ArmoniaApp', ['formly', 'formlyBootstrap', 'ArmoniaApp.controlle
       }, {
         name: 'idObraSocial',
         type: 'integer'
+      }]
+    }, {
+      name: 'historiaClinica',
+      columns: [{
+        name: 'id',
+        type: 'integer primary key autoincrement'
+      }, {
+        name: 'idPaciente',
+        type: 'integer'
+      }, {
+        name: 'fecha',
+        type: 'text'
+      }, {
+        name: 'idProfesional',
+        type: 'text'
+      }, {
+        name: 'detale',
+        type: 'text'
       }]
     }]
   })
@@ -46,9 +64,9 @@ angular.module('ArmoniaApp', ['formly', 'formlyBootstrap', 'ArmoniaApp.controlle
       url: '/pacientes',
       views: {
         'toolbarOptions': {
-          templateUrl: 'components/common/abm-toolbar-options.html',
+          templateUrl: 'components/pacientes/pacientesViewAllToolbar.html',
           controller: 'PacientesController',
-          controllerAs: 'toolbarCtrl'
+          controllerAs: 'abmCtrl'
         },
         'content': {
           templateUrl: 'components/pacientes/pacientesViewAll.html',
@@ -68,6 +86,9 @@ angular.module('ArmoniaApp', ['formly', 'formlyBootstrap', 'ArmoniaApp.controlle
           controller: 'PacientesController',
           controllerAs: 'abmCtrl'
         }
+      },
+      params: {
+        abmMode: 'create'
       }
     })
     .state('pacientesEdit', {
@@ -81,6 +102,32 @@ angular.module('ArmoniaApp', ['formly', 'formlyBootstrap', 'ArmoniaApp.controlle
       },
       params: {
         abmMode: 'edit'
+      }
+    })
+    .state('historiasClinicasView', {
+      url: '/historiasClinicas/:idEntity/ver',
+      views: {
+        'content': {
+          templateUrl: 'components/historiasClinicas/historiasClinicasView.html',
+          controller: 'HistoriasClinicasController',
+          controllerAs: 'abmCtrl'
+        }
+      },
+      params: {
+        abmMode: 'view'
+      }
+    })
+    .state('historiasClinicasCreate', {
+      url: '/historiasClinicas/:idEntity/create',
+      views: {
+        'content': {
+          templateUrl: 'components/historiasClinicas/historiasClinicasEdit.html',
+          controller: 'HistoriasClinicasController',
+          controllerAs: 'abmCtrl'
+        }
+      },
+      params: {
+        abmMode: 'create'
       }
     });
 

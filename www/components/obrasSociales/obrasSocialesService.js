@@ -4,10 +4,10 @@ angular
 
 function ObrasSocialesService() {
 	return {
-		getObrasSociales: getObrasSociales
+		getAll: getAll
 	}
 
-	function getObrasSociales() {
+	function getAll() {
 		return [{
 			"id": "0",
 			"codigo": "NINGUNA",

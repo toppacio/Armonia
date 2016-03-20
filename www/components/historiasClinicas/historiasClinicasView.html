@@ -1,0 +1,25 @@
+<md-content layout="column" flex layout-align="start stretch">
+  <md-list>
+    <md-list-item ng-repeat="historiaClinica in abmCtrl.entities">
+      <div class="md-list-item-text">
+        <div layout="row" layout-align="space-between center">
+          <h3>
+            <span 
+            flex>Fecha: {{historiaClinica.fecha}}</span>
+            <span flex="50" class="md-subhead">Profesional: {{historiaClinica.transient.profesional.descripcion}}</span>
+          </h3>
+        </div>
+        <h4>{{historiaClinica.detalle}}</h4>
+      </div>
+      <md-button class="md-icon-button" ui-sref="pacientesEdit({idEntity: entity.id})">
+        <md-tooltip md-direction="top">Editar</md-tooltip>
+        <md-icon md-svg-icon="pencil"></md-icon>
+      </md-button>
+      <md-button class="md-icon-button" ng-click="abmCtrl.showConfirmDelete($event, entity)">
+        <md-tooltip md-direction="top">Borrar</md-tooltip>
+        <md-icon md-svg-icon="delete"></md-icon>
+      </md-button>
+      <md-divider ng-if="!$last"></md-divider>
+    </md-list-item>
+  </md-list>
+</md-content>
